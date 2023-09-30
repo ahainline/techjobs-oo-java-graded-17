@@ -46,6 +46,54 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        String printName;
+        String printEmployer;
+        String printLocation;
+        String printPositionType;
+        String printCoreCompetency;
+
+        if (this.getName() != null && !this.getName().isEmpty()) {
+            printName = this.getName();
+        } else {
+            printName = "Data not available";
+        }
+
+        if (this.getEmployer().toString() != null && !this.getEmployer().toString().isEmpty()) {
+            printEmployer = this.getEmployer().toString();
+        } else {
+            printEmployer = "Data not available";
+        }
+
+        if (this.getLocation().toString() != null && !this.getLocation().toString().isEmpty()) {
+            printLocation = this.getLocation().toString();
+        } else {
+            printLocation = "Data not available";
+        }
+
+        if (this.getPositionType().toString() != null && !this.getPositionType().toString().isEmpty()) {
+            printPositionType = this.getPositionType().toString();
+        } else {
+            printPositionType = "Data not available";
+        }
+
+        if (this.getCoreCompetency().toString() != null && !this.getCoreCompetency().toString().isEmpty()) {
+            printCoreCompetency = this.getCoreCompetency().toString();
+        } else {
+            printCoreCompetency = "Data not available";
+        }
+
+        return System.lineSeparator() +
+                "ID: " + this.getId() + System.lineSeparator() +
+                "Name: " + printName + System.lineSeparator() +
+                "Employer: " + printEmployer + System.lineSeparator() +
+                "Location: " + printLocation + System.lineSeparator() +
+                "Position Type: " + printPositionType + System.lineSeparator() +
+                "Core Competency: " + printCoreCompetency +
+                System.lineSeparator();
+    }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
