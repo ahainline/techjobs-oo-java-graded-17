@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Job {
@@ -48,49 +50,33 @@ public class Job {
 
     @Override
     public String toString() {
-        String printName;
-        String printEmployer;
-        String printLocation;
-        String printPositionType;
-        String printCoreCompetency;
+        HashMap<String, String> printValues = new HashMap<>();
+        printValues.put("name", getName());
+        printValues.put("employer", getEmployer().toString());
+        printValues.put("location", getLocation().toString());
+        printValues.put("positionType", getPositionType().toString());
+        printValues.put("coreCompetency", getCoreCompetency().toString());
+        int emptyCount = 0;
 
-        if (this.getName() != null && !this.getName().isEmpty()) {
-            printName = this.getName();
-        } else {
-            printName = "Data not available";
+        for (Map.Entry<String, String> printable : printValues.entrySet()) {
+            String key = printable.getKey();
+            if (printable.getValue().isEmpty()) {
+                printValues.replace(key, "Data not available");
+                emptyCount++;
+            }
         }
 
-        if (this.getEmployer().toString() != null && !this.getEmployer().toString().isEmpty()) {
-            printEmployer = this.getEmployer().toString();
-        } else {
-            printEmployer = "Data not available";
-        }
-
-        if (this.getLocation().toString() != null && !this.getLocation().toString().isEmpty()) {
-            printLocation = this.getLocation().toString();
-        } else {
-            printLocation = "Data not available";
-        }
-
-        if (this.getPositionType().toString() != null && !this.getPositionType().toString().isEmpty()) {
-            printPositionType = this.getPositionType().toString();
-        } else {
-            printPositionType = "Data not available";
-        }
-
-        if (this.getCoreCompetency().toString() != null && !this.getCoreCompetency().toString().isEmpty()) {
-            printCoreCompetency = this.getCoreCompetency().toString();
-        } else {
-            printCoreCompetency = "Data not available";
+        if (emptyCount == printValues.size()){
+            return "OOPS! This job does not seem to exist.";
         }
 
         return System.lineSeparator() +
                 "ID: " + this.getId() + System.lineSeparator() +
-                "Name: " + printName + System.lineSeparator() +
-                "Employer: " + printEmployer + System.lineSeparator() +
-                "Location: " + printLocation + System.lineSeparator() +
-                "Position Type: " + printPositionType + System.lineSeparator() +
-                "Core Competency: " + printCoreCompetency +
+                "Name: " + printValues.get("name") + System.lineSeparator() +
+                "Employer: " + printValues.get("employer") + System.lineSeparator() +
+                "Location: " + printValues.get("location") + System.lineSeparator() +
+                "Position Type: " + printValues.get("positionType") + System.lineSeparator() +
+                "Core Competency: " + printValues.get("coreCompetency") +
                 System.lineSeparator();
     }
 

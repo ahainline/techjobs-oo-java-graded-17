@@ -92,4 +92,13 @@ public class JobTest {
                 "Core Competency: Persistence" + System.lineSeparator());
         Assert.assertEquals(correctString, testString);
     }
+
+    @Test
+    public void testToStringHandlesEmptyJob() {
+        Job testJob = new Job("", new Employer(""),
+                new Location(""), new PositionType(""),
+                new CoreCompetency(""));
+
+        Assert.assertEquals("OOPS! This job does not seem to exist.", testJob.toString());
+    }
 }
