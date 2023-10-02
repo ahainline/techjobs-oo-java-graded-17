@@ -77,7 +77,7 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        Job testJob = new Job("Product tester", new Employer(),
+        Job testJob = new Job("Product tester", new Employer(""),
                 new Location("Desert"), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
 
